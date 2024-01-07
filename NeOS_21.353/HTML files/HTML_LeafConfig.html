@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neo | Leaf Config</title>
+<link rel="icon" href="data:,">
+
+<style type="text/css">
+/* Import Open Sans Font From Google Servers */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+/* Font Styling */
+h2 {display: block; color:black; font-family:'Open Sans', sans-serif; font-size: clamp(23px, 10vw, 41.6px); line-height:10px; margin-top: 0.75em; margin-bottom: 1em; margin-left: 0; margin-right: 0; font-weight: bold;}
+p, label {display: block; color:black; font-family:'Open Sans', sans-serif; font-size: clamp(15px, 4.5vw, 19px); line-height:10px; margin-top: 1em; margin-bottom: 1em; margin-left: 0; margin-right: 0;}
+/* Change Text Selection Color */
+::selection, ::-moz-selection {color: white; background: #009933;}
+/* Wrapper Styling */
+html {width: 100vw; text-align: center;}
+body {width: 100vw; margin: 0 auto;}
+div {overflow: hidden;}
+form {}
+/* Object Styling */
+input {box-sizing: border-box; width: 90vw; height: 5vh; min-width: 285px; min-height: 28.5px; max-width: 370px; max-height: 30px; overflow: auto; margin: 0 auto; padding: 5px; border: 1px solid black; border-radius: 5px; outline: none; font-size: clamp(14px, 3.5vw, 14.4px);}
+input[type=submit] {width: 90vw; height: 5vh; min-width: 285px; min-height: 30px; max-width: 370px; max-height: 40px; overflow: auto; margin: 0 auto; padding: 5px; border: 1px #006600; border-radius: 5px; outline: none; background-color: #009933; color: white}
+input:focus[type=submit] {overflow: auto; margin: 0 auto; padding: 5px; border: 1px #006600; border-radius: 5px; outline: none; box-shadow: 0 0 5px #006600; background-color: #00A435; color: white}
+select, option {box-sizing: border-box; width: 90vw; height: 5vh; min-width: 285px; min-height: 28.5px; max-width: 370px; max-height: 30px; overflow: auto; margin: 0 auto; padding: 5px; border: 1px solid black; border-radius: 5px; outline: none; font-size: clamp(14px, 3.5vw, 14.4px);}
+input:focus, select:focus, option:hover  { margin: 0 auto; padding: 5px; border: 1px solid black; border-radius: 5px; outline: none; outline-color: #006600; box-shadow: 0 0 5px #009933;}
+
+</style>
+</head>
+
+<body>
+<form action="/LeafConfig" method="POST">
+  <h2>NEO<span style="color: #009933"> LEAF CONFIG</span></h2>
+    
+    <label for="AttAppliance" title="Please select the device or appliance that Neo is wired to">Attached Appliance:</label>
+  <select class="select" id="AttAppliance" name="AttApplianceMenu" title="Please select the device or appliance that Neo is wired to">
+    <option value="AC1" title="The primary AC in the residence">Air Conditioner (Primary)</option>
+    <option value="AC2" title="The secondary AC in the residence">Air Conditioner (Secondary)</option>
+        <option value="ACO" title="Any other AC system or similar device">Air Conditioner (Other)</option>
+        <option value="SC1" title="The primary swamp cooler in the residence">Swamp Cooler (Primary)</option>
+        <option value="SC2" title="The secondary swamp cooler in the residence">Swamp Cooler (Secondary)</option>
+        <option value="SCO" title="Any other swamp cooler or similar device">Swamp Cooler (Other)</option>
+        <option value="HEF" title="An electrically powered furnace system">Electric Furnace</option>
+        <option value="HEP" title="An electrically powered heat pump system">Electric Heat Pump</option>
+        <option value="HEO" title="Any other electric heater system or similar device">Electric Heater (Other)</option>
+        <option value="WHT" title="An electrically powered water heater tank">Electric Water Heater Tank</option>
+        <option value="AER" title="A combination electric stove and oven">All-In-One Electric Range</option>
+        <option value="ECS" title="An electrically powered cooktop stove (NO OVEN)">Electric Cooktop Stove</option>
+        <option value="OVE" title="An electrically powered oven only">Electric Oven Only</option>
+        <option value="DRY">Electric Dryer</option>
+        <option value="OA1">Other Appliance 1</option>
+        <option value="OA2">Other Appliance 2</option>
+  </select>
+    
+    <label for="ApplInVoltage">Appliance Input Voltage:</label>
+  <p><input class="input" id="ApplInVoltage" name="AIVBox" type="number" min="21"
+    max="300" step="0.1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+    placeholder="Voltage in VAC (Optional)" size="28" maxlength="5"/></p>
+    
+    <label for="ApplPriority">Appliance Usage Priority:</label>
+  <select class="select" id="ApplPriority" name="ApplPriorityMenu">
+    <option value="1">1 (Absolutely Need)</option>
+    <option value="2">2 (Need More Than Want)</option>
+        <option value="3">3 (Neutral)</option>
+        <option value="4">4 (Want More Than Need)</option>
+        <option value="5">5 (Can Live Without)</option>
+  </select>
+    <br><br>
+    
+    <label for="UtilityCompany">Utility Company:</label>
+  <select class="select" id="UtilityCompany" name="UtilityCoMenu">
+    <option value="APS">APS (Arizona Public Service)</option>
+    <option value="SRP">SRP (Salt River Project)</option>
+  </select>
+    
+    <label for="RatePlan">Rate Plan:</label>
+  <select class="select" id="RatePlan" name="RatePlanMenu">
+    <option value="SCM">Saver Choice Max</option>
+    <option value="E27">E-27 Customer Generation</option>
+  </select>
+    
+    <label for="PlanPeakLimit">Peak Demand (Plan Limit):</label>
+  <p><input class="input" id="PlanPeakLimit" name="PPDLBox" type="number" min="1" max="100"
+    step="0.1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+    placeholder="Plan Limit in kW/Cycle" required="required" size="28" maxlength="5"/></p>
+    
+  <label for="UserPeakTarget">Peak Demand (User Target):</label>
+  <p><input class="input" id="UserPeakTarget" name="UPDTBox" type="number" min="1" max="100"
+    step="0.1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+    placeholder="User Target in kW/Cycle" required="required" size="28" maxlength="5"/></p>
+  
+    <p><input id="Submit" name="SubmitBtn" type="submit" value="Submit" /></p>
+</form>
+<form action="/LeafConfig" method="POST">
+  <input id="Reset" name="resetBtn" type="reset" value="Reset" />
+</form>
+</body>
+</html>

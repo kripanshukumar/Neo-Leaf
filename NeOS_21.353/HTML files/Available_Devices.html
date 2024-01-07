@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo | Devices</title>
+
+    <style type="text/css">
+        h1 {display: block; color:black; font-family:'Open Sans', sans-serif; font-size: clamp(23px, 10vw, 41.6px); line-height:10px; margin-top: 0.75em; margin-bottom: 1em; margin-left: 0; margin-right: 0; font-weight: bold;}
+        html {width: 100vw; text-align: center;}
+        body {width: 100vw; margin: 0 auto;}
+        ul{ list-style: none; border-style: solid; border-radius: 1rem; margin-left:17.5vw ;width: 50vw; padding-left: -10%;}
+        li{ margin:0px auto; text-align: center; }
+    </style>
+
+</head>
+<body>
+    <h1>NEO<span style="color: #009933"> DEVICES</span></h1>
+    <div>
+        <h2>Connected</h2>
+        <div id="connected">
+            <ul>
+                <li>NONE</li>
+                <li>NONE</li>
+                <li>NONE</li>
+                <li>NONE</li>
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h2>On Network</h2>
+        <div id="onNetwork">
+            <ul>
+                <li>NONE</li>
+                <li>NONE</li>
+                <li>NONE</li>
+                <li>NONE</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        setInterval(function(){
+            updateConnected();
+        }, 2000);
+
+        function updateConnected(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("connected").innerHTML =
+                    this.responseText;
+                }
+            };
+        xhttp.open("GET", "handleADC", true);
+        xhttp.send();
+        }
+    </script>
+</body>
+</html>
